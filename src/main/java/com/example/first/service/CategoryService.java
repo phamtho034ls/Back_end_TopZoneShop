@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.first.dto.response.CategoryDTO;
+import com.example.first.dto.response.ProductDTO;
 import com.example.first.entity.CategoryEntity;
+import com.example.first.entity.ProductEntity;
 import com.example.first.repository.CategoryRepository;
 
 @Service
@@ -33,6 +35,38 @@ public class CategoryService {
 		return listCategories;
 	}
 
+	public List<CategoryDTO> getListCategoryWithProduct() {
+		List<CategoryEntity> result = categoryRepository.findAll();
+		List<CategoryDTO> listCategories = new ArrayList<CategoryDTO>();
+
+		// chuyển đổi dữ liệu entity sang DTO
+		for (CategoryEntity categoryEntity : result) {
+			CategoryDTO dto = new CategoryDTO(categoryEntity.getId(), categoryEntity.getName(),categoryEntity.getDescription());
+			List<ProductDTO> prdList = new ArrayList<ProductDTO>();
+			for(ProductEntity prd: categoryEntity.getProductList()) {
+				ProductDTO newDto = new ProductDTO();
+				newDto.setId(prd.getId());
+				newDto.setDescription(prd.getDescription());
+				newDto.setImage(prd.getImage());
+				newDto.setName(prd.getName());
+				newDto.setPrice(prd.getPrice());
+				newDto.setQuantity(prd.getQuantity());
+				newDto.setColors(prd.getColors());
+				newDto.setMemory(prd.getMemory());
+				newDto.setDiscount(prd.getDiscount());
+				newDto.setCode(prd.getCode());
+				newDto.setCategory(new CategoryDTO(prd.getCategory().getId(), prd.getCategory().getName(),
+						prd.getCategory().getDescription()));
+				prdList.add(newDto);
+			}
+			dto.setProducts(prdList);
+			listCategories.add(dto);
+
+		}
+
+		return listCategories;
+	}
+	
 	public CategoryDTO saveCategory(CategoryEntity newCategory) {
 		CategoryEntity cate = categoryRepository.save(newCategory);
 

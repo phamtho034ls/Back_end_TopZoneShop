@@ -10,7 +10,8 @@ public class UserDTO {
 	private String userName;
 	private String passWord;
 	
-	public UserDTO(Long id, String fullName, String phone, String address, String email, String birth, String userName,
+	public UserDTO(Long id, String fullName, String phone, String address, 
+			String email, String birth, String userName,
 			String passWord) {
 		super();
 		this.id = id;

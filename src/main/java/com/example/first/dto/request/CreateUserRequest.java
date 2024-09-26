@@ -10,6 +10,7 @@ public class CreateUserRequest {
 	private String userName;
 	private String passWord;
 	private String code;
+	
 	public CreateUserRequest(Long id, String fullName, String phone, String address, String email, String birth,
 			String userName, String passWord,String code) {
 		super();

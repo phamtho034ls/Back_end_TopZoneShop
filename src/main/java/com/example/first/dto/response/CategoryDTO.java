@@ -1,9 +1,20 @@
 package com.example.first.dto.response;
 
+import java.util.List;
+
 public class CategoryDTO {
 	private Long id;
 	private String name;
 	private String description;
+	private List<ProductDTO> products;
+
+	public CategoryDTO(Long id, String name, String description, List<ProductDTO> products) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.products = products;
+	}
 
 	public CategoryDTO(Long id, String name, String description) {
 		super();
@@ -11,8 +22,9 @@ public class CategoryDTO {
 		this.name = name;
 		this.description = description;
 	}
+
 	public CategoryDTO() {
-	
+
 	}
 
 	public Long getId() {
@@ -37,5 +49,13 @@ public class CategoryDTO {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<ProductDTO> products) {
+		this.products = products;
 	}
 }

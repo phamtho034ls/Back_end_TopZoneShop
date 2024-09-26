@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.first.entity.Oders;
 
 public interface OdersRepository extends JpaRepository<Oders, Long>{
+
+//	Object findAllById(Long id);
 	
 }

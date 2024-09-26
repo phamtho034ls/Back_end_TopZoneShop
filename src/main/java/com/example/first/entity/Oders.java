@@ -1,5 +1,8 @@
 package com.example.first.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -7,7 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,19 +26,23 @@ public class Oders {
 	@Column(name="status")
 	private String stautus;
 	
-	@OneToOne(mappedBy = "oders")
-	OderDetails oderDetail = new OderDetails();
+	@OneToMany(mappedBy = "oders")
+	List<OderDetails> listOder = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "Userid")
 	private UsersEntity usersEntity;
 
-	public Oders(Long id, String date, String stautus, OderDetails oderDetail, UsersEntity usersEntity) {
+	public Oders() {
+		
+	}
+
+	public Oders(Long id, String date, String stautus, List<OderDetails> listOder, UsersEntity usersEntity) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.stautus = stautus;
-		this.oderDetail = oderDetail;
+		this.listOder = listOder;
 		this.usersEntity = usersEntity;
 	}
 
@@ -63,12 +70,12 @@ public class Oders {
 		this.stautus = stautus;
 	}
 
-	public OderDetails getOderDetail() {
-		return oderDetail;
+	public List<OderDetails> getListOder() {
+		return listOder;
 	}
 
-	public void setOderDetail(OderDetails oderDetail) {
-		this.oderDetail = oderDetail;
+	public void setListOder(List<OderDetails> listOder) {
+		this.listOder = listOder;
 	}
 
 	public UsersEntity getUsersEntity() {
@@ -78,5 +85,7 @@ public class Oders {
 	public void setUsersEntity(UsersEntity usersEntity) {
 		this.usersEntity = usersEntity;
 	}
+	
 
+	
 }

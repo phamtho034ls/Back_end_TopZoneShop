@@ -175,7 +175,29 @@ public class ProductService {
 		return listProductDtos;
 
 	}
+	public List<ProductDTO> getListByName(String name) {
+		Long id = productRepository.findByName(name);
+		List<ProductEntity> listProducts = productRepository.findByCid(id);
+		List<ProductDTO> listProductDtos = new ArrayList<ProductDTO>();
 
+		for (ProductEntity prd : listProducts) {
+			ProductDTO newDto = new ProductDTO();
+			newDto.setId(prd.getId());
+			newDto.setDescription(prd.getDescription());
+			newDto.setImage(prd.getImage());
+			newDto.setName(prd.getName());
+			newDto.setPrice(prd.getPrice());
+			newDto.setQuantity(prd.getQuantity());
+			newDto.setDiscount(prd.getDiscount());
+			newDto.setCode(prd.getCode());
+			newDto.setCategory(new CategoryDTO(prd.getCategory().getId(), prd.getCategory().getName(),
+					prd.getCategory().getDescription()));
+			listProductDtos.add(newDto);
+		}
+
+		return listProductDtos;
+
+	}
 	public boolean deleteProduct(Long id)
 	{
 		boolean isExit = productRepository.existsById(id);

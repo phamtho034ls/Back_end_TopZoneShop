@@ -1,19 +1,26 @@
 package com.example.first.dto.response;
 
+import java.util.List;
+
+import com.example.first.dto.request.CreateOderDetailRequest;
+import com.example.first.dto.request.CreateUserRequest;
+
 public class OdersDTO {
 	private Long id;
 	private String date;
 	private String status;
-	private UserDTO userDto;
-	private OdersDetailDTO oderDetailDto;
+	private UserDTO userDTO;
+	private List<OdersDetailDTO> listodeDetailDTOs ; 
+	
 
-	public OdersDTO(Long id, String date, String status, UserDTO userDto, OdersDetailDTO oderDetailDto) {
+
+	public OdersDTO(Long id, String date, String status, UserDTO userDTO, List<OdersDetailDTO> listodeDetailDTOs) {
 		super();
 		this.id = id;
 		this.date = date;
 		this.status = status;
-		this.userDto = userDto;
-		this.oderDetailDto = oderDetailDto;
+		this.userDTO = userDTO;
+		this.listodeDetailDTOs = listodeDetailDTOs;
 	}
 
 	public OdersDTO() {
@@ -43,20 +50,29 @@ public class OdersDTO {
 		this.status = status;
 	}
 
-	public UserDTO getUserDto() {
-		return userDto;
+	public UserDTO getUserDTO() {
+		return userDTO;
 	}
 
-	public void setUserDto(UserDTO userDto) {
-		this.userDto = userDto;
+	public void setUserDTO(UserDTO userDTO) {
+		this.userDTO = userDTO;
 	}
 
-	public OdersDetailDTO getOderDetailDto() {
-		return oderDetailDto;
+	public List<OdersDetailDTO> getListodeDetailDTOs() {
+		return listodeDetailDTOs;
 	}
 
-	public void setOderDetailDto(OdersDetailDTO oderDetailDto) {
-		this.oderDetailDto = oderDetailDto;
+	public void setListodeDetailDTOs(List<OdersDetailDTO> listodeDetailDTOs) {
+		this.listodeDetailDTOs = listodeDetailDTOs;
 	}
 
+	
+
+	
+
+	
+
+
+
+	
 }

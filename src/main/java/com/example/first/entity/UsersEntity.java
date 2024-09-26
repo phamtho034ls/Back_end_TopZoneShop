@@ -46,6 +46,20 @@ public class UsersEntity {
 	List<Oders> oderList = new ArrayList<Oders>();
 	
 	public UsersEntity(Long id, String fullName, String address, String phone, String email, String birth,
+			String userName, String passWord, String code) {
+		super();
+		this.id = id;
+		this.fullName = fullName;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
+		this.birth = birth;
+		this.userName = userName;
+		this.passWord = passWord;
+		this.code = code;
+	}
+	
+	public UsersEntity(Long id, String fullName, String address, String phone, String email, String birth,
 			String userName, String passWord, String code, List<Oders> oderList) {
 		super();
 		this.id = id;

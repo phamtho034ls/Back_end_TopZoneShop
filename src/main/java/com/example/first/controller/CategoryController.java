@@ -3,6 +3,7 @@ package com.example.first.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.example.first.dto.response.CategoryDTO;
 import com.example.first.entity.CategoryEntity;
 import com.example.first.service.CategoryService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -26,6 +28,11 @@ public class CategoryController {
 	@GetMapping("/list")
 	public List<CategoryDTO> getCategory() {
 		return categoryService.getListCategory();
+	}
+	
+	@GetMapping("/listWithProduct")
+	public List<CategoryDTO> getCategoryWithProduct() {
+		return categoryService.getListCategoryWithProduct();
 	}
 
 	@PostMapping("/create")
